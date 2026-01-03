@@ -28,6 +28,7 @@ export default function Page() {
 
   useEffect(() => {
     if (id) getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (

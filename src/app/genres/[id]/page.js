@@ -80,12 +80,12 @@ export default function Searchfliter() {
         {/* RIGHT CONTENT */}
         <main className="flex-1">
           <p className="text-sm text-gray-500 mb-4">
-            {movies.length} titles in "
+            {movies.length} titles in &quot;
             {genres
               .filter((g) => selected.includes(g.id))
               .map((g) => g.name)
               .join(", ")}
-            "
+            &quot;
           </p>
 
           {/* MOVIE GRID */}

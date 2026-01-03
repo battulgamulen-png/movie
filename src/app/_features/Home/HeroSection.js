@@ -9,9 +9,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
 const BASE_URL = "https://api.themoviedb.org/3";
-const TOKEN = "YOUR_TMDB_API_TOKEN_HERE"; // энд өөрийн TMDB API token-ээ тавина
+const TOKEN =
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjI5ZmNiMGRmZTNkMzc2MWFmOWM0YjFjYmEyZTg1NiIsIm5iZiI6MTc1OTcxMTIyNy43OTAwMDAyLCJzdWIiOiI2OGUzMGZmYjFlN2Y3MjAxYjI5Y2FiYmIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.M0DQ3rCdsWnMw8U-8g5yGXx-Ga00Jp3p11eRyiSxCuY";
 
 export default function HeroSection({ id }) {
   const [videoId, setVideoId] = useState(null); // selected YouTube video key
@@ -38,6 +40,7 @@ export default function HeroSection({ id }) {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   // TMDB-с хамгийн эхний YouTube trailer-ийг сонгоно
@@ -53,10 +56,11 @@ export default function HeroSection({ id }) {
             <Card className="w-full h-full">
               <CardContent className="flex items-center justify-center p-0">
                 <div className="relative w-full h-[600px] flex-shrink-0 overflow-x-scroll m-0">
-                  <img
-                    src="Hero.jpg"
+                  <Image
+                    src="/Hero.jpg" // slash-аар эхлүүлнэ
                     alt="Hero Background"
-                    className="inset-0 w-full h-full object-cover -z-10 bg-center bg-cover"
+                    fill
+                    className="object-cover"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent -z-10"></div>
@@ -115,4 +119,3 @@ export default function HeroSection({ id }) {
     </Carousel>
   );
 }
-
