@@ -5,6 +5,7 @@ import Image from "next/image";
 
 export default function MovieD({ movie, trailerKey }) {
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
+  const [isMovieOpen, setIsMovieOpen] = useState(false);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
@@ -18,14 +19,22 @@ export default function MovieD({ movie, trailerKey }) {
         {movie.release_date} · {movie.runtime} min
       </p>
 
-      {trailerKey && (
+      <div className="flex gap-3 mt-4">
+        {trailerKey && (
+          <button
+            onClick={() => setIsTrailerOpen(true)}
+            className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition"
+          >
+            Watch Trailer
+          </button>
+        )}
         <button
-          onClick={() => setIsTrailerOpen(true)}
-          className="mt-4 px-4 py-2 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition"
+          onClick={() => setIsMovieOpen(true)}
+          className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition"
         >
-          Watch Trailer
+          Watch Movie
         </button>
-      )}
+      </div>
 
       {/* Images */}
       <div className="flex gap-6 mt-8">
@@ -87,7 +96,26 @@ export default function MovieD({ movie, trailerKey }) {
               className="w-full h-full"
               src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1`}
               title={`${movie.title} trailer`}
-              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
+
+      {isMovieOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden">
+            <button
+              onClick={() => setIsMovieOpen(false)}
+              className="absolute top-2 right-3 z-10 text-white text-xl"
+            >
+              x
+            </button>
+            <iframe
+              className="w-full h-full"
+              src={`https://www.vidking.net/embed/movie/${movie.id}`}
+              title={`${movie.title} movie`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
