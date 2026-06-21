@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import Header from "@/app/_features/Header";
-import { Footer } from "@/app/_features/Footer";
 
 const BASE_URL = "https://api.themoviedb.org/3";
 const TOKEN =
@@ -68,9 +67,9 @@ export default function Searchfliter() {
   return (
     <div className="bg-background text-foreground min-h-screen">
       <Header />
-      <div className="max-w-[1400px] mx-auto flex gap-6 mt-6">
+      <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row gap-6 mt-6 px-4 sm:px-6">
         {/* LEFT FILTER */}
-        <aside className="w-[260px] border-r pr-4">
+        <aside className="w-full md:w-[260px] md:border-r md:pr-4 border-border shrink-0">
           <h2 className="font-semibold text-lg mb-3">Genres</h2>
 
           <div className="flex flex-wrap gap-2">
@@ -107,11 +106,12 @@ export default function Searchfliter() {
             {movies.map((movie) => (
               <Link key={movie.id} href={`/movie-detail/${movie.id}`}>
                 <div className="group cursor-pointer">
-                  <div className="relative w-full h-[300px] rounded-lg overflow-hidden">
+                  <div className="relative w-full aspect-[2/3] rounded-lg overflow-hidden">
                     <Image
                       src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                       alt={movie.title}
                       fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                       className="object-cover group-hover:scale-105 transition"
                     />
                   </div>
@@ -147,7 +147,6 @@ export default function Searchfliter() {
           </div>
         </main>
       </div>
-      <Footer />
     </div>
   );
 }

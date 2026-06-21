@@ -34,14 +34,14 @@ export default function Ger({ type }) {
   return (
     <div className="bg-background text-foreground min-h-screen">
       <Header />
-      <div className="pt-[52px] pl-[80px] pr-[80px]">
+      <div className="pt-8 sm:pt-12 px-4 sm:px-8 lg:px-20">
         <div className="flex justify-between items-center mb-4">
-          <p className="text-[24px] font-semibold not-italic text-foreground">
+          <p className="text-xl sm:text-2xl font-semibold not-italic text-foreground">
             Upcoming
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
           {moviesData?.map((movie, index) => (
             <MovieCard
               key={index}

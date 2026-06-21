@@ -8,20 +8,22 @@ export const MovieCard = (props) => {
   return (
     <div
       onClick={() => router.push(`/movie-detail/${id}`)}
-      className="cursor-pointer hover:scale-105 transition-transform duration-200"
+      className="cursor-pointer hover:scale-105 transition-transform duration-200 w-full"
     >
-      <Image
-        src={image}
-        alt="Movie poster"
-        width={230}
-        height={340}
-        className="object-cover rounded-md"
-      />
-      <div className="w-[213px] h-[56px] p-2 bg-card text-card-foreground rounded-md shadow-md mt-2 border border-border">
-        <p className="text-sm font-medium">
-          ⭐️ {rating}/10
+      <div className="relative w-full aspect-[2/3] rounded-md overflow-hidden">
+        <Image
+          src={image}
+          alt="Movie poster"
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+          className="object-cover"
+        />
+      </div>
+      <div className="w-full p-2 bg-card text-card-foreground rounded-md shadow-md mt-2 border border-border">
+        <p className="text-xs sm:text-sm font-medium">
+          ⭐️ {rating?.toFixed?.(1) ?? rating}/10
         </p>
-        <p className="text-base font-semibold">
+        <p className="text-sm sm:text-base font-semibold line-clamp-1">
           {title}
         </p>
       </div>

@@ -36,21 +36,21 @@ export function MovieList({ type }) {
   }, []);
   const router = useRouter();
   return (
-    <div className="pt-[52px] pl-[80px] pr-[80px]">
+    <div className="pt-8 sm:pt-12 px-4 sm:px-8 lg:px-20">
       <div className="flex flex-row justify-between items-center mb-4">
-        <p className="text-[24px] font-semibold not-italic text-foreground">
+        <p className="text-xl sm:text-2xl font-semibold not-italic text-foreground">
           {titles[type]}
         </p>
         <button
           onClick={() => router.push("/upcomingSeeMore")}
-          className="flex cursor-pointer items-center justify-center gap-2 w-[130px] h-[40px] text-foreground rounded-xl hover:text-red-500 transition-all duration-200"
+          className="flex cursor-pointer items-center justify-center gap-2 h-10 px-3 text-foreground rounded-xl hover:text-red-500 transition-all duration-200"
         >
           <p>See more</p>
           <Sum2 className="w-4 h-4" />
         </button>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
         {moviesData?.slice(0, 10).map((movie, index) => (
           <MovieCard
             key={index}

@@ -80,14 +80,14 @@ export default function HeroSection() {
 
   if (movies.length === 0) {
     return (
-      <div className="relative w-full h-[600px] bg-card animate-pulse" />
+      <div className="relative w-full h-[440px] sm:h-[540px] lg:h-[600px] bg-card animate-pulse" />
     );
   }
 
   const current = movies[index];
 
   return (
-    <section className="relative w-full h-[600px] overflow-hidden group">
+    <section className="relative w-full h-[440px] sm:h-[540px] lg:h-[600px] overflow-hidden group">
       {/* Slides */}
       {movies.map((movie, i) => (
         <div
@@ -112,14 +112,14 @@ export default function HeroSection() {
       ))}
 
       {/* Content overlay */}
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-12 flex items-end pb-20">
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex items-end pb-12 sm:pb-16 md:pb-20">
         <div className="max-w-2xl text-white">
           <p className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-primary-foreground/80 bg-primary/30 backdrop-blur px-3 py-1 rounded-full border border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
             Now Playing
           </p>
 
-          <h1 className="mt-4 text-4xl md:text-6xl font-bold tracking-tight drop-shadow-lg">
+          <h1 className="mt-4 text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight drop-shadow-lg line-clamp-2">
             {current.title}
           </h1>
 

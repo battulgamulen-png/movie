@@ -57,7 +57,7 @@ export default function SearchPage() {
   return (
     <div className="bg-background text-foreground min-h-screen">
       <Header />
-      <div className="max-w-[1400px] mx-auto mt-6 flex gap-10">
+      <div className="max-w-[1400px] mx-auto mt-6 flex flex-col md:flex-row gap-8 md:gap-10 px-4 sm:px-6">
         {/* LEFT CONTENT */}
         <main className="flex-1">
           <h1 className="text-xl font-semibold mb-2">Search results</h1>
@@ -67,11 +67,11 @@ export default function SearchPage() {
             {totalPages})
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
             {movies.map((movie) => (
               <Link key={movie.id} href={`/movie-detail/${movie.id}`}>
                 <div className="cursor-pointer">
-                  <div className="relative w-full h-[300px] rounded-lg overflow-hidden">
+                  <div className="relative w-full aspect-[2/3] rounded-lg overflow-hidden">
                     <Image
                       src={
                         movie.poster_path
@@ -80,6 +80,7 @@ export default function SearchPage() {
                       }
                       alt={movie.title}
                       fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                       className="object-cover hover:scale-105 transition"
                     />
                   </div>
@@ -114,7 +115,7 @@ export default function SearchPage() {
         </main>
 
         {/* RIGHT SIDEBAR */}
-        <aside className="w-[300px] border-l pl-6">
+        <aside className="w-full md:w-[300px] md:border-l md:pl-6 border-border shrink-0">
           <h2 className="font-semibold text-lg mb-1">Search by genre</h2>
           <p className="text-sm text-muted-foreground mb-4">
             See lists of movies by genre

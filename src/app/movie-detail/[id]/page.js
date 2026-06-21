@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Footer } from "../../_features/Footer";
 import Header from "../../_features/Header";
 import { useParams } from "next/navigation";
 import MovieD from "@/app/_components/MovieD";
@@ -50,8 +49,6 @@ export default function Page() {
       <Header />
 
       {detailData && <MovieD movie={detailData} trailerKey={trailerKey} />}
-
-      <Footer />
     </div>
   );
 }
